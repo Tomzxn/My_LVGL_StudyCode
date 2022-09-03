@@ -1,0 +1,29 @@
+#include "test.h"
+
+lv_obj_t* cb1;
+
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+    if(obj==cb1)
+    {
+        if(event == LV_EVENT_CLICKED)
+        {
+            printf("%d\n",lv_cb_is_checked(cb1));
+        }
+
+    }
+}
+
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    cb1 = lv_cb_create(scr,NULL);
+    lv_obj_align(cb1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_cb_set_text(cb1,"hello_world");
+    lv_cb_set_checked(cb1,true);
+    lv_obj_set_event_cb(cb1,event_handler);
+
+    lv_cb_set_inactive(cb1);//禁用
+}
