@@ -1,0 +1,75 @@
+#include "test.h"
+
+
+lv_style_t arc_style;
+lv_obj_t * arc3;
+lv_obj_t * progress_label;
+uint8_t progress = 100;
+
+
+typedef struct
+{
+    uint8_t name;
+    uint8_t num;
+}_stu;
+
+_stu stu={1,10};
+
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+
+}
+
+static void arc3_set_progress(uint8_t progress)
+{
+    char buf[10];
+    lv_arc_set_angles(arc3,(uint16_t)(3.6f*progress),0);
+    sprintf(buf,"%d%%",100-progress);
+    lv_label_set_text(progress_label,buf);
+    lv_obj_realign(progress_label);
+}
+
+static void progress_task(lv_task_t * t)
+{
+    //if(is_pause)
+    //return;
+    progress--;
+    if(progress<1)
+    progress = 100;
+    arc3_set_progress(progress);
+    printf("%d\n",stu->name);
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    //创建的弧形样式
+    lv_style_copy(&arc_style,&lv_style_plain);
+    arc_style.line.color = LV_COLOR_BLUE;
+    arc_style.line.width = 20;
+    arc_style.line.rounded = 1;
+
+    //创建弧形1
+    lv_obj_t* arc1 = lv_arc_create(scr,NULL);
+    lv_arc_set_style(arc1,LV_ARC_STYLE_MAIN,&arc_style);
+    lv_arc_set_angles(arc1,180,220);
+    lv_obj_set_size(arc1,100,100);
+    lv_obj_set_pos(arc1,20,20);
+
+    //创建弧形2
+    lv_obj_t* arc2 = lv_arc_create(scr,NULL);
+    lv_arc_set_style(arc2,LV_ARC_STYLE_MAIN,&arc_style);
+    lv_arc_set_angles(arc2,200,0);
+    lv_obj_set_size(arc2,100,100);
+    lv_obj_set_pos(arc2,200,20);
+
+    arc3 = lv_arc_create(scr,arc1);
+    lv_arc_set_style(arc3,LV_ARC_STYLE_MAIN,&arc_style);
+    lv_obj_align(arc3,arc1,LV_ALIGN_OUT_BOTTOM_LEFT,0,10);
+    progress_label = lv_label_create(scr,NULL);
+    lv_obj_align(progress_label,arc3,LV_ALIGN_CENTER,0,0);
+
+    arc3_set_progress(progress);
+    lv_task_create(progress_task,10,LV_TASK_PRIO_MID,stu);
+}

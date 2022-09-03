@@ -1,0 +1,67 @@
+#include "test.h"
+
+lv_obj_t* btn1;
+
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+    if(obj==btn1)
+    {
+        if(event==LV_EVENT_PRESSED)
+        {
+            printf("push down\n");
+        }
+        else if(event==LV_EVENT_PRESSING)
+        {
+           // printf("hold on\n");
+        }
+        else if(event==LV_EVENT_PRESS_LOST)
+        {
+            printf("lost...\n");
+        }
+        else if(event==LV_EVENT_SHORT_CLICKED)
+        {
+            printf("short click\n");
+        }
+        else if(event==LV_EVENT_LONG_PRESSED)
+        {
+            printf("long click\n");
+        }
+        else if(event==LV_EVENT_LONG_PRESSED_REPEAT)
+        {
+            printf("long click again...again...\n");
+        }
+        else if(event==LV_EVENT_CLICKED)
+        {
+            printf("lost click\n");
+        }
+        else if(event==LV_EVENT_DRAG_BEGIN)
+        {
+            printf("drag start\n");
+        }
+        else if(event==LV_EVENT_DRAG_END)
+        {
+            printf("drag end\n");
+        }
+        else if(event==LV_EVENT_DRAG_THROW_BEGIN)
+        {
+            printf("drag throw end\n");
+        }
+    }
+}
+
+
+
+
+
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    btn1 = lv_btn_create(scr,NULL);
+    lv_obj_align(btn1,NULL,LV_ALIGN_CENTER,0,0);
+
+    lv_obj_set_event_cb(btn1,event_handler);
+    //lv_obj_set_drag(btn1,true);
+    //lv_obj_set_drag_throw(btn1,true);
+}

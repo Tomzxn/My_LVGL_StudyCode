@@ -1,0 +1,54 @@
+#include "test.h"
+
+lv_style_t my_style;
+
+void test_start()
+{
+    //my_style.body.border.part = LV_BORDER_LEFT | LV_BORDER_TOP;
+    lv_obj_t* scr = lv_scr_act();
+
+    lv_style_copy(&my_style,&lv_style_plain_color);
+
+    //body部分（背景部分）
+    #if 0
+    {
+        my_style.body.main_color = LV_COLOR_BLUE;
+        my_style.body.main_color = LV_COLOR_MAKE(49,202,42);
+        my_style.body.grad_color = LV_COLOR_RED;
+        my_style.body.radius = LV_RADIUS_CIRCLE;
+        my_style.body.opa = LV_OPA_30;
+        my_style.body.border.color = LV_COLOR_BLUE;
+        my_style.body.border.width = 2;
+        my_style.body.border.part = LV_BORDER_FULL;
+        my_style.body.border.opa = LV_OPA_30;
+        my_style.body.shadow.color =  LV_COLOR_GREEN;
+        my_style.body.shadow.width = 10;
+        my_style.body.shadow.type = LV_SHADOW_FULL;
+        my_style.body.padding.top = 40;
+    }
+    #endif
+
+    //text部分（文字）
+    #if 1
+    {
+        my_style.text.color = LV_COLOR_RED;
+        my_style.text.font = &lv_font_roboto_22;
+        my_style.text.letter_space = 5;
+        my_style.text.line_space = 10;
+        my_style.text.opa = LV_OPA_60;
+    }
+    #endif
+
+
+
+    lv_obj_t* label1 = lv_label_create(scr,NULL);
+    lv_label_set_long_mode(label1,LV_LABEL_LONG_CROP);
+    lv_obj_set_pos(label1,50,50);
+    lv_obj_set_size(label1,100,60);
+
+    lv_label_set_text(label1,"Marvin\nhello");
+    lv_label_set_align(label1,LV_LABEL_ALIGN_CENTER);
+    lv_label_set_body_draw(label1,true);
+    lv_label_set_style(label1,LV_LABEL_STYLE_MAIN,&my_style);
+
+}

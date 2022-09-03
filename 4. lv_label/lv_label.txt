@@ -1,0 +1,27 @@
+char name[]={"i am Marvin"};
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    lv_obj_t* label1 = lv_label_create(scr,NULL);
+    lv_obj_set_pos(label1,50,50);
+    lv_label_set_body_draw(label1,true);
+    lv_label_set_recolor(label1,true);
+    lv_label_set_style(label1,LV_LABEL_STYLE_MAIN,&lv_style_plain_color);
+
+
+    lv_label_set_long_mode(label1,LV_LABEL_LONG_SROLL_CIRC);
+    //lv_label_set_anim_speed(label1,LV_LABEL_DEF_SCROLL_SPEED*2);
+    lv_obj_set_size(label1,30,50);
+
+    lv_label_set_align(label1,LV_LABEL_ALIGN_CENTER);
+
+    //lv_label_set_text(label1,"hello world\ni am Marvin");
+    //lv_label_set_array_text(label1,name,sizeof(name)-1);
+    //lv_label_set_text(label1,"#ff0000 M##00ff00 a##0000ff r#vin");
+    lv_label_set_text(label1,"Marin");
+    //lv_label_ins_text(label1,1,"123");//M123arvin
+    //lv_label_ins_text(label1,LV_LABEL_POS_LAST,"456");//M123arvin456
+    //lv_label_cut_text(label1,1,3);//Mn
+
+}

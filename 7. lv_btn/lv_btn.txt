@@ -1,0 +1,13 @@
+#include "test.h"
+
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    lv_obj_t* btn1 = lv_btn_create(scr,NULL);
+    lv_obj_align(btn1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_btn_set_ink_in_time(btn1,2000);
+    lv_btn_set_ink_wait_time(btn1,2000);
+    lv_btn_set_ink_out_time(btn1,2000);
+}
