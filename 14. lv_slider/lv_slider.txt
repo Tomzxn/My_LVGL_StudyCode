@@ -1,0 +1,29 @@
+#include "test.h"
+
+
+lv_obj_t* slider1;
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+    if(obj == slider1)
+    {
+        if(event == LV_EVENT_RELEASED)
+        {
+            printf("%d\n",lv_slider_get_value(slider1));
+        }
+    }
+}
+
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+    slider1 = lv_slider_create(scr,NULL);
+    lv_obj_set_size(slider1,200,40);
+    lv_obj_align(slider1,scr,LV_ALIGN_CENTER,0,0);
+    lv_slider_set_range(slider1,0,200);
+    lv_slider_set_anim_time(slider1,3000);
+    lv_slider_set_value(slider1,80,LV_ANIM_ON);
+
+    lv_obj_set_event_cb(slider1,event_handler);
+
+}
