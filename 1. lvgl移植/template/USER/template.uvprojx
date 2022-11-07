@@ -339,7 +339,7 @@
               <MiscControls>--diag_suppress=68  --diag_suppress=111  --diag_suppress=550</MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\HARDWARE\LCD;..\HARDWARE\KEY;..\HARDWARE\IIC;..\HARDWARE\24CXX;..\FWLIB\inc;..\HARDWARE\TOUCH;..\HARDWARE\TIMER;..\GUI;..\GUI\lvgl;..\GUI\lv_examples;..\GUI\lvgl_driver;..\GUI_APP</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\HARDWARE\LCD;..\HARDWARE\KEY;..\HARDWARE\IIC;..\HARDWARE\24CXX;..\FWLIB\inc;..\HARDWARE\TOUCH;..\HARDWARE\TIMER;..\GUI;..\GUI\lvgl;..\GUI\lv_examples;..\GUI\lvgl_driver;..\GUI_APP;..\GUI_APP\lv_gauge</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -982,6 +982,11 @@
               <FileName>lv_cont_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\GUI_APP\lv_cont_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_gauge_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI_APP\lv_gauge\lv_gauge_test.c</FilePath>
             </File>
           </Files>
         </Group>

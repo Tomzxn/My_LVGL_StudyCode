@@ -1,0 +1,30 @@
+#include "test.h"
+
+
+lv_style_t lmeter1_style;
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    lv_obj_t* lmeter1 = lv_lmeter_create(scr,NULL);
+    lv_obj_set_size(lmeter1,200,200);
+    lv_obj_align(lmeter1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_style_copy(&lmeter1_style,&lv_style_plain_color);
+
+    lmeter1_style.body.main_color = LV_COLOR_GRAY;
+    lmeter1_style.body.grad_color = LV_COLOR_RED;
+    lmeter1_style.line.color = LV_COLOR_GRAY;
+    lmeter1_style.line.width = 4;
+    lmeter1_style.body.padding.left = 40;
+
+    lv_lmeter_set_style(lmeter1,LV_LMETER_STYLE_MAIN,&lmeter1_style);
+
+    lv_lmeter_set_scale(lmeter1,360,30);
+    lv_lmeter_set_value(lmeter1,60);
+
+}

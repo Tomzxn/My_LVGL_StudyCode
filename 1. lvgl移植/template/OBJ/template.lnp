@@ -113,6 +113,7 @@
 "..\obj\lv_label_test.o"
 "..\obj\lv_style_test.o"
 "..\obj\lv_cont_test.o"
+"..\obj\lv_gauge_test.o"
 --strict --scatter "..\OBJ\template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

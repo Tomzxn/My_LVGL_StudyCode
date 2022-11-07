@@ -1,0 +1,32 @@
+#include "test.h"
+
+lv_coord_t array[] = {20,30,44,10,23,42,124,142,33,44};
+//事件回调函数
+static void event_handler(lv_obj_t * obj, lv_event_t event)
+{
+
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();//获取当前活跃的屏幕对象
+    lv_obj_t* chart1 = lv_chart_create(scr,NULL);
+    //lv_obj_set_size(chart1,300,300);
+    lv_obj_align(chart1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_chart_series_t* series1 = lv_chart_add_series(chart1,LV_COLOR_BLUE);
+    lv_chart_clear_serie(chart1,series1);
+    lv_chart_set_div_line_count(chart1,3,5);
+    lv_chart_set_range(chart1,0,200);
+    lv_chart_set_type(chart1,LV_CHART_TYPE_LINE);
+    lv_chart_set_point_count(chart1,10);
+    lv_chart_set_series_opa(chart1,LV_OPA_60);
+    lv_chart_set_series_width(chart1,4);
+    //lv_chart_set_series_darking(chart1,)
+    lv_chart_init_points(chart1,series1,0);
+    lv_chart_set_points(chart1,series1,array);
+    lv_chart_set_update_mode(chart1,LV_CHART_UPDATE_MODE_SHIFT);
+    lv_chart_set_next(chart1,series1,200);
+    lv_chart_set_x_tick_texts(chart1, "1\n2\n3\n4\n5", 3, LV_CHART_AXIS_DRAW_LAST_TICK);
+    lv_chart_set_x_tick_length(chart1,10, 3);
+    lv_chart_set_margin(chart1,30);
+}

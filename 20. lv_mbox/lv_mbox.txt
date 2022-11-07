@@ -1,0 +1,37 @@
+#include "test.h"
+
+lv_style_t bg_style;
+lv_style_t btnm_bg_style;
+lv_style_t btn_rel_style;
+lv_style_t btn_pr_style;
+
+void mbox_set_msg_recolor(lv_obj_t * mbox,bool en)
+{
+    lv_mbox_ext_t * ext = lv_obj_get_ext_attr(mbox);//获取控件的扩展字段
+    lv_label_set_recolor(ext->text,en);//ext->text 就是消息对话框内部的标签对象
+}
+
+const char * const btn_mapaction [] = {"#5FB878 Apply#","#ff0000 Close#",""};
+//事件回调函数
+static void event_handler(lv_obj_t * obj, lv_event_t event)
+{
+
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();//获取当前活跃的屏幕对象
+    lv_obj_t* mbox1 = lv_mbox_create(scr,NULL);
+
+    mbox_set_msg_recolor(mbox1,true);
+    lv_mbox_set_text(mbox1,"#007AFF Title#\nThis is a message");
+
+    lv_mbox_add_btns(mbox1,btn_mapaction);
+    lv_mbox_set_recolor(mbox1,true);
+
+    lv_obj_set_event_cb(mbox1,event_handler);
+
+
+
+}
+

@@ -1,0 +1,38 @@
+#include "test.h"
+
+const lv_color_t colors[] = {LV_COLOR_GREEN,LV_COLOR_BLUE};
+
+
+lv_style_t gauge1_style;
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+
+    lv_style_copy(&gauge1_style,&lv_style_plain_color);
+
+    gauge1_style.body.main_color = LV_COLOR_GRAY;
+    gauge1_style.body.grad_color = LV_COLOR_RED;
+    gauge1_style.line.color = LV_COLOR_GRAY;
+    gauge1_style.line.width = 2;
+    gauge1_style.body.padding.left = 15;
+    gauge1_style.text.color = LV_COLOR_BLACK;
+
+    lv_obj_t* gauge1 = lv_gauge_create(scr,NULL);
+    lv_obj_set_size(gauge1,200,200);
+    lv_obj_align(gauge1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_gauge_set_style(gauge1,LV_GAUGE_STYLE_MAIN,&gauge1_style);
+
+
+    lv_gauge_set_range(gauge1,0,100);
+    lv_gauge_set_critical_value(gauge1,70);
+    lv_gauge_set_scale(gauge1,240,18,6);
+    lv_gauge_set_needle_count(gauge1,2,colors);
+    lv_gauge_set_value(gauge1,0,70);
+    lv_gauge_set_value(gauge1,1,80);
+}

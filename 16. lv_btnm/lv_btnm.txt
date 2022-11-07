@@ -1,0 +1,49 @@
+#include "test.h"
+
+lv_obj_t* btnm1;
+
+const char * btnm1_map[] = {"#00ff00 btn1#","#ff0000 btn2#","\n","btn3","btn4",""};
+
+const lv_btnm_ctrl_t btnm1_ctrl_map[] = {
+                                            2,          //btn1
+                                            1|LV_BTNM_CTRL_NO_REPEAT,         //btn2
+                                            LV_BTNM_CTRL_TGL_ENABLE/* | LV_BTNM_CTRL_TGL_STATE*/,     //btn3
+                                            LV_BTNM_CTRL_TGL_ENABLE | LV_BTNM_CTRL_TGL_STATE
+                                        };
+
+void event_handler(lv_obj_t* obj,lv_event_t event)
+{
+    if(obj == btnm1)
+    {
+        if(event == LV_EVENT_VALUE_CHANGED)
+        {
+            printf("%d\n",lv_btnm_get_pressed_btn(btnm1));
+        }
+    }
+}
+
+void test_start()
+{
+    lv_obj_t* scr = lv_scr_act();
+
+    btnm1 = lv_btnm_create(scr,NULL);
+    lv_obj_set_size(btnm1,200,100);
+    lv_obj_align(btnm1,NULL,LV_ALIGN_CENTER,0,0);
+    lv_btnm_set_map(btnm1,(const char **)btnm1_map);
+    /*
+    //lv_btnm_set_btn_ctrl(btnm1,1,LV_BTNM_CTRL_HIDDEN);//隐藏BTN2
+    lv_btnm_set_btn_ctrl(btnm1,0,LV_BTNM_CTRL_NO_REPEAT);//取消长按重复触发事件
+    lv_btnm_set_btn_ctrl(btnm1,2,LV_BTNM_CTRL_INACTIVE);//失能按钮
+    lv_btnm_set_btn_ctrl(btnm1,1,LV_BTNM_CTRL_TGL_ENABLE);//使能切换态
+    lv_btnm_set_btn_ctrl(btnm1,0,LV_BTNM_CTRL_CLICK_TRIG);//松手有效
+    */
+
+    lv_btnm_set_ctrl_map(btnm1,btnm1_ctrl_map);
+
+    lv_btnm_set_recolor(btnm1,true);//使能重绘色
+    lv_btnm_set_one_toggle(btnm1,true);
+
+
+    lv_obj_set_event_cb(btnm1,event_handler);
+
+}

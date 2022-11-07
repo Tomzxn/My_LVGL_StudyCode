@@ -9,7 +9,7 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
-#include "lv_cont_test.h"
+#include "lv_gauge_test.h"
 
 int main(void)
 { 
@@ -27,7 +27,7 @@ int main(void)
 	lv_port_disp_init();	//lvgl显示接口初始化,放在lv_init()的后面
 	lv_port_indev_init();	//lvgl输入接口初始化,放在lv_init()的后面
 	
-	lv_cont_test_start();	//运行例程
+	lv_gauge_test_start();	//运行例程
 	while(1)
 	{
 		tp_dev.scan(0);

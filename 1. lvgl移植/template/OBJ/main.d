@@ -191,4 +191,4 @@
 ..\obj\main.o: ..\GUI\lvgl\src/lv_draw/lv_img_cache.h
 ..\obj\main.o: ..\GUI\lvgl_driver\lv_port_disp.h
 ..\obj\main.o: ..\GUI\lvgl_driver\lv_port_indev.h
-..\obj\main.o: ..\GUI_APP\lv_cont_test.h
+..\obj\main.o: ..\GUI_APP\lv_gauge\lv_gauge_test.h
